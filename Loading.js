@@ -1,8 +1,9 @@
-import React, {
+import React, { Component } from 'react';
+import {
   InteractionManager
 } from 'react-native';
 
-export default class Loading extends React.Component {
+export default class Loading extends Component {
   constructor() {
     super();
     this.state = { loaded: false };

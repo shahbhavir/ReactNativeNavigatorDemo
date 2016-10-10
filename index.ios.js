@@ -2,11 +2,10 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  */
-
-import React, {
+import React, { Component } from 'react';
+import {
   AppRegistry,
   StyleSheet,
-  Component,
   Text,
   View,
   Navigator,

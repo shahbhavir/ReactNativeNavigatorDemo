@@ -2,16 +2,17 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  */
-
-import React, {
+import React, { Component } from 'react';
+import {
   AppRegistry,
   StyleSheet,
-  Component,
   Text,
   View,
   Navigator,
   TouchableOpacity,
 } from 'react-native';
+
+import slowlog from 'react-native-slowlog';
 
 import SplashPage from './SplashPage';
 import LoginPage from './LoginPage';
@@ -39,7 +40,30 @@ const styles = StyleSheet.create({
 });
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    slowlog(this, /.*/);
+    this.state = {
+      showSplash: true
+    };
+  }
+  componentWillMount() {
+    setTimeout(() => {
+      this.setState({
+        showSplash: false
+      });
+    }, 1000);
+  }
+
   render() {
+    let { showSplash } = this.state;
+    if (showSplash) {
+      return (
+        <View style={{flex: 1, backgroundColor: '#246dd5', alignItems: 'center', justifyContent: 'center'}}>
+          <Text style={{color: 'white', fontSize: 32,}}>Hello</Text>
+        </View>
+      );
+    }
     return (
       <Navigator
           initialRoute={{id: 'SplashPage', name: 'Index'}}
